@@ -14,11 +14,23 @@ class TreeBuilder:
          self.cache = []
 
      def read(self):
-         print("Please insert number of nodes (n): ")
-         self.n = int(sys.stdin.readline())
-         print("Please insert nodes: ")
-         self.parent = list(map(int, sys.stdin.readline().split()))
-         self.cache = [0] * self.n
+        # no klav I vai F (ar in vai [0])
+        # I gadijuma int(input())
+        # F gadijuma with open(..) as f un tad readline
+        text = input()
+        # Printing answer, write your code here
+        if "I" in text:
+            print("Please insert number of nodes (n): ")
+            self.n = int(input())
+            print("Please insert nodes: ")
+            self.parent = list(map(int, input().split()))
+            self.cache = [0] * self.n
+        if "F" in text:
+            al="./test/"+input()
+            f = open(al, "r")
+            self.n = int(f.readline())
+            self.parent = list(map(int, f.readline().split()))
+            self.cache = [0] * self.n
 
      def path_len(self, node_id):
          parent = self.parent[node_id]
@@ -44,5 +56,5 @@ def readData():
      readData()
 
 threading.Thread(target=main).start()
-main()
+# main()
 # print(numpy.array([1,2,3]))
